@@ -38,5 +38,5 @@ class Post(models.Model):
         blank=True,
         null=True,
         related_name='group_list',
-        on_delete=models.CASCADE
+        on_delete=models.SET_NULL
     )

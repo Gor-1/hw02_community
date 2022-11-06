@@ -2,13 +2,15 @@
 from django.shortcuts import render, get_object_or_404
 # Импортируем модель, чтобы обратиться к ней
 from .models import Post, Group
+# кольво постов
+PUB_VALUE = 10
 
 
 def index(request):
     # Одна строка вместо тысячи слов на SQL:
     # в переменную posts будет сохранена выборка из 10 объектов модели Post,
     # отсортированных по полю pub_date по убыванию
-    posts = Post.objects.order_by('-pub_date')[:10]
+    posts = Post.objects.select_related()[:PUB_VALUE]
     # В словаре context отправляем информацию в шаблон
     context = {
         'posts': posts,
@@ -18,7 +20,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
+    posts = group.group_list.all()[:PUB_VALUE]
 
     context = {
         'text': slug,
