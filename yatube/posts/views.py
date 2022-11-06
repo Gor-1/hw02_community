@@ -7,7 +7,7 @@ from .models import Post, Group
 def index(request):
     # Одна строка вместо тысячи слов на SQL:
     # в переменную posts будет сохранена выборка из 10 объектов модели Post,
-    # отсортированных по полю pub_date по убыванию (от больших значений к меньшим)
+    # отсортированных по полю pub_date по убыванию
     posts = Post.objects.order_by('-pub_date')[:10]
     # В словаре context отправляем информацию в шаблон
     context = {
@@ -21,7 +21,7 @@ def group_posts(request, slug):
     posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
 
     context = {
-        'text' : slug,
+        'text': slug,
         'group': group,
         'posts': posts,
     }
