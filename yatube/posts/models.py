@@ -40,3 +40,6 @@ class Post(models.Model):
         related_name='group_list',
         on_delete=models.SET_NULL
     )
+
+    class Meta:
+        ordering = ['-pub_date']
