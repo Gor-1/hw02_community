@@ -15,14 +15,14 @@
     <meta name="theme-color" content="#ffffff">
     <!-- Подключен файл со стандартными стилями бустрап -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
-    <title>{%block title%}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
     <header>
       {% include 'includes/header.html' %}    
     </header>
     <main>
-      {% block main %}{% endblock %}
+      {% block content %}{% endblock %}
     </main>
     <!-- Использованы классы бустрапа: -->
     <!-- border-top: создаёт тонкую линию сверху блока -->

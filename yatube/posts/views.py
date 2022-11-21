@@ -7,7 +7,6 @@ PUB_VALUE = 10
 
 
 def index(request):
-    # Одна строка вместо тысячи слов на SQL:
     # в переменную posts будет сохранена выборка из 10 объектов модели Post,
     # отсортированных по полю pub_date по убыванию
     posts = Post.objects.select_related()[:PUB_VALUE]
